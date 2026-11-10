@@ -28,13 +28,16 @@ A corrupt or unreadable saved session is NOT silently replaced. The app starts a
 
 Edit the `templates` array in `core.js` to change the lists. Rows are `[id, category, title, description]` for shots and `[id, category, question]` for prompts. Keep IDs stable when changing wording; retain existing IDs if you want existing progress to load. If removing an ID or making structural changes, start fresh before updating, or explicitly save a new in-memory session after the version change. Keep titles/descriptions compact and rerun layout tests at 240 x 282. The editor is the source file, not an on-device text editor.
 
-## Hosting and installation (not yet performed)
+## Hosting and installation (hosted 2026-11-09; physical R1 install pending)
 
-1. Choose an HTTPS static host. Host the four app files (`index.html`, `style.css`, `core.js`, `app.js`) together; or rename the standalone `Shoot-Companion.html` to `index.html` and host that one file.
-2. Verify the served app at its exact final URL.
-3. Use Rabbit's official QR generator with title Shoot Companion and the final URL. No install QR exists yet because this app has not been hosted.
-4. On R1, open Creations > Add via QR code and scan the installation QR.
-5. Test physical wheel/side input, progress after leaving/reopening, all three templates, and native Exit.
+Live URL: https://billthorpe522.github.io/r1-shoot-companion/
+Source repo: https://github.com/Billthorpe522/r1-shoot-companion (GitHub Pages, public)
+
+1. Hosted the four app files (`index.html`, `style.css`, `core.js`, `app.js`) on GitHub Pages, plus `icon.png`.
+2. Verified the served app at its exact final URL: browser smoke suite 30/30 against the live URL at the 240 x 282 R1 viewport; layout fit checked for every shot and prompt card in both light and dark modes (53 cards each, 0 overflow).
+3. Install QR generated with Rabbit's official QR generator (`rabbit-hmi-oss/creations-sdk`, `qr/final`). Saved at `install/shoot-companion-install-qr.png`; the QR payload was decoded back and matches the creation JSON exactly (title, url, description, iconUrl, themeColor).
+4. On R1, open Creations > Add via QR code and scan the installation QR (open the PNG on a second screen or phone, scan with the R1 camera).
+5. Still to test on physical hardware: wheel and side-click input, progress after leaving and reopening, all three templates, and native Exit.
 
 Hosted app source is public to anyone with its URL. Do not add private client lists or credentials to the template file. A creation is not a camera remote, audio recorder, or editing application.
 
@@ -56,4 +59,4 @@ Run `python shoot-companion/build.py` from the workspace root to regenerate the 
 - https://github.com/rabbit-hmi-oss/creations-sdk/blob/main/plugin-demo/reference/creation-triggers.md
 - https://github.com/rabbit-hmi-oss/creations-sdk/tree/main/qr
 
-Status: browser/model tested, not published, not installed or tested on a physical R1.
+Status: hosted and verified live (30/30 smoke at 240 x 282, 0 layout overflow in light and dark). Install QR generated and payload-verified. Not yet installed or tested on a physical R1.
